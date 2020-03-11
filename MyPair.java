@@ -1,4 +1,3 @@
-package application;
 
 public class MyPair implements Comparable<MyPair>
 {
@@ -54,3 +53,4 @@ public class MyPair implements Comparable<MyPair>
 		return "MyPair [count=" + count + ", token=" + token + "]";
 	}
 }
+

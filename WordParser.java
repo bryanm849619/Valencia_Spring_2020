@@ -1,5 +1,3 @@
-package application;
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -8,13 +6,14 @@ import java.util.Collections;
 import java.util.List;
 import java.util.StringTokenizer;
 
-public class WordParser
+
+public class WordParser 
 {
 	private String filePath, fileData, parseDelimiters;
 	private StringTokenizer strTokens;
 	private List <MyPair> occurenceList;
 	private boolean foundToken;
-	
+
 	WordParser(String path, String delimiters) throws IOException
 	{
 		filePath = path;
@@ -86,6 +85,15 @@ public class WordParser
 	{
 		String content = new String(Files.readAllBytes(Paths.get(fileName)));
 		return content;
+	}
+	
+	// JUnit Testing 
+	public String getFilePath() {
+		return filePath;
+	}
+
+	public String getParseDelimiters() {
+		return parseDelimiters;
 	}
 
 }
