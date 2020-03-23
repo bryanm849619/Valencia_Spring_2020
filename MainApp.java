@@ -2,8 +2,8 @@ import java.util.Random;
 
 public class MainApp
 {
-	//private static int arraySize = 200000000;
-	private static int arraySize = 10;
+	private static int arraySize = 200000000;
+	//private static int arraySize = 10;
 	
 	public static void main(String[] args)
 	{ 	

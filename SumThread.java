@@ -9,8 +9,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class SumThread implements Runnable
 {
 	// how many threads will run this task
-	//private static final int threadCount = 1000;
-	private static final int threadCount = 5;
+	private static final int threadCount = 1000;
+	//private static final int threadCount = 5;
 	
 	// threads that will be used for this task
 	Thread taskedThreads[];
