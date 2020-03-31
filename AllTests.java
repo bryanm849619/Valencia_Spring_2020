@@ -4,6 +4,7 @@ import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
 @SuiteClasses({ WordParserTest.class, WordParserTest2.class })
-public class AllTests {
+public class AllTests
+{
 
 }

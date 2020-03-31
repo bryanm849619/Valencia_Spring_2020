@@ -1,1 +1,1 @@
-typeSearchIndex = [{"p":"fib_Module5","l":"FibSequencer.AlgorithmType"},{"l":"All Classes","url":"allclasses-index.html"},{"p":"fib_Module5","l":"FibSequencer"}]
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"<Unnamed>","l":"MyPair"},{"p":"<Unnamed>","l":"WordParser"}]
