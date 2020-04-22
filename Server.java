@@ -3,6 +3,8 @@ package application;
 import java.io.*;
 import java.net.*;
 import java.util.Date;
+import java.util.List;
+
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.scene.Scene;
@@ -10,12 +12,19 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 
-public class Server extends Application {
-  @Override // Override the start method in the Application class
-  public void start(Stage primaryStage) {
+public class Server extends Application 
+{
+  @Override
+  /**  
+	 *  a override method for javaFX to render a window with a stage and scene
+	 *  @param primaryStage  the primary stage for the window and scenes.
+	 */
+  public void start(Stage primaryStage) 
+  {
+	 
     // Text area for displaying contents
     TextArea ta = new TextArea();
-
+    
     // Create a scene and place it in the stage
     Scene scene = new Scene(new ScrollPane(ta), 450, 200);
     primaryStage.setTitle("Server"); // Set the stage title
@@ -37,45 +46,41 @@ public class Server extends Application {
           socket.getInputStream());
         DataOutputStream outputToClient = new DataOutputStream(
           socket.getOutputStream());
+        
+        ObjectInputStream serializedObject = new ObjectInputStream(inputFromClient);
   
         while (true) {
+        	int menuInput = inputFromClient.readInt();
+        	List <MyPair> myList;
+        	Integer index = 1;
         	
-        	double numberInput = inputFromClient.readDouble();
-        	boolean isPrime = true;
-        	
-        	for (int i = 2; i < numberInput; i++)
+        	if (menuInput == 3)
         	{
-        		if (numberInput % i == 0)
+        		myList = (List <MyPair>) serializedObject.readObject();
+
+        		for (MyPair iter : myList)
         		{
-        			isPrime = false;
-        			break;
+        			if (index > 20)
+        				break;
+        			
+        			ta.appendText(index.intValue() + ":\t" + iter.getToken() + "\t\t" + iter.getCount() + "\n");
+        			index++;
         		}
         	}
-        	
-        	outputToClient.writeBoolean(isPrime);
+       
         	Platform.runLater(() -> {
-                ta.appendText("Number received from client: " 
-                  + numberInput + '\n');
-        	/*
-          // Receive radius from the client
-          double radius = inputFromClient.readDouble();
-  
-          // Compute area
-          double area = radius * radius * Math.PI;
-  
-          // Send area back to the client
-          outputToClient.writeDouble(area);
-  
-          Platform.runLater(() -> {
-            ta.appendText("Radius received from client: " 
-              + radius + '\n');
-            ta.appendText("Area is: " + area + '\n'); */
+                ta.appendText("Menu option received from client: " 
+                  + menuInput + '\n');
+
           });
         }
       }
       catch(IOException ex) {
         ex.printStackTrace();
-      }
+      } catch (ClassNotFoundException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
     }).start();
   }
 
@@ -87,3 +92,4 @@ public class Server extends Application {
     launch(args);
   }
 }
+

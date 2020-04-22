@@ -1,6 +1,13 @@
+package application;
 
-public class MyPair implements Comparable<MyPair>
+import java.io.Serializable;
+
+public class MyPair implements Comparable<MyPair>, Serializable 
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8250550027787977103L;
 	/** count is a Integer that will keep track of the number of elements that match this token within this pair */
 	public  Integer count;
 	/** token is a String that will store the string token for this pair */

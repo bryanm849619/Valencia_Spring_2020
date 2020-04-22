@@ -1,4 +1,7 @@
+package application;
+
 import java.io.IOException;
+import java.io.Serializable;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -7,8 +10,12 @@ import java.util.List;
 import java.util.StringTokenizer;
 
 
-public class WordParser 
+public class WordParser implements Serializable
 {
+	/**
+	 * serialVersionUID is a unique identifier for serialization to distinguish itself over crossplatorms and compilers
+	 */
+	public static final long serialVersionUID = 6706623487760274140L;
 	/**  
 	 *  filePath is a string that will store the path to the file being opened
 	 *  fileData is a string of raw data that will be retrieved from @see #readHtmlFile(String)
@@ -18,7 +25,7 @@ public class WordParser
 	/**  
 	 *  strTokens is a StringTokenizer to store all the tokens @see StringTokenizer
 	 */
-	public StringTokenizer strTokens;
+	public transient StringTokenizer strTokens;
 	/**  
 	 *  occurenceList is a List of MyPair that will keep track of the token and the amount of tokens that exist
 	 *  @see MyPair
